@@ -32,14 +32,21 @@ LLM 기반 웹소설 작가를 위한 사전 피드백·검수 도구 MVP (2시�
 - 홍길동전 데이터는 example.txt에서 읽도록 변경
 - Gemini API 키는 .env 파일에서 읽도록 설정
 
-### 2단계: 데이터 모델 정의 (10분)
-- [ ] TypeScript 타입 정의 - Issue, Check, PersonaResult, Analysis 타입 구현
-  - packages/core/types.ts 작성
+### 2단계: 데이터 모델 정의 (10분) ✅ 완료
+- [x] TypeScript 타입 정의 - Issue, Check, PersonaResult, Analysis 타입 구현
+  - packages/core/src/types.ts 작성 완료 (155줄)
   - 모든 JSON 스키마 인터페이스 정의
+    - SettingNote (캐릭터, 관계, 세계관 규칙, 타임라인)
+    - ConsistencyCheck (개연성, 캐릭터, 세계관 점수)
+    - PersonaResult (3종 페르소나 평가)
+    - AggregateReport (verdict, 가중합 점수, 액션아이템)
+    - Analysis (전체 분석 결과)
 
-- [ ] 홍길동전 데이터 준비 - packages/data에 원문 JSON 하드코딩
-  - hongGilDong.json 파일 생성
-  - 설정노트 캐시 데이터 구조 준비
+- [x] 홍길동전 데이터 준비 - packages/data에 원문 처리
+  - packages/data/src/honggildongjeon.ts 구현 (127줄)
+  - example.txt에서 텍스트 읽기 기능
+  - 챕터 파싱 기능 (== 마커 기반)
+  - 샘플 데이터 폴백 구현
 
 ### 3단계: Core 패키지 구현 (30분)
 - [ ] LLM 어댑터 구현 - packages/llm/index.ts에 generateJSON 함수 구현
