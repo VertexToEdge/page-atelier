@@ -9,6 +9,11 @@ LLM 기반 웹소설 작가를 위한 사전 피드백·검수 도구 MVP (2시�
 - **완료율**: 75% (Phase 1-5 of 7)
 - **핵심 기능 구현 완료**: 분석 API 및 UI 모두 작동
 
+### 최근 수정사항
+- **텍스트 truncation 제거**: 모든 substring 호출 제거하여 전체 텍스트를 LLM에 전달
+- **Fallback 메커니즘 구현**: LLM 실패 시 기본값으로 대체
+- **UI 개선**: 최종 판정 결과에 whitespace-pre-line 적용으로 줄바꿈 표시 개선
+
 ## 작업 순서 및 예상 시간
 
 ### 1단계: 프로젝트 초기화 (15분) ✅ 완료
@@ -60,13 +65,14 @@ LLM 기반 웹소설 작가를 위한 사전 피드백·검수 도구 MVP (2시�
   - apps/web/app/page.tsx 메인 레이아웃 (219줄)
   - Responsive 2-column 그리드
   - 헤더 (로고 + 액션 버튼)
-  - 홍길동전 샘플 텍스트 로드 기능
+  - 홍길동전 샘플 텍스트 로드 기능 (전체 텍스트 로드로 수정)
 
 - [x] 검수 결과 탭 컴포넌트 구현 - 점수바, 이슈 테이블 표시
-  - components/ConsistencyCheckTab.tsx (188줄)
+  - components/ConsistencyCheckTab.tsx (221줄)
   - 점수 시각화 (Progress Bar)
   - Verdict 카드 (PASS/REVISE/BLOCK)
   - 이슈 테이블 및 액션 아이템
+  - whitespace-pre-line 적용으로 줄바꿈 지원 추가
 
 - [x] 페르소나 탭 컴포넌트 구현 - 3개 페르소나 카드 및 점수 표시
   - components/PersonasTab.tsx (193줄)

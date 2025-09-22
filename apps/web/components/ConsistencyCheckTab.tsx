@@ -76,7 +76,7 @@ export default function ConsistencyCheckTab({
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-gray-700 mb-4">{aggregateReport.executive_summary}</p>
+          <p className="text-gray-700 mb-4 whitespace-pre-line">{aggregateReport.executive_summary}</p>
           <Alert>
             <TrendingUp className="h-4 w-4" />
             <AlertTitle>추천 사항</AlertTitle>
