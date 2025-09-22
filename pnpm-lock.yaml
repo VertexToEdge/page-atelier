@@ -87,8 +87,11 @@ importers:
 
   packages/core:
     dependencies:
+      '@page-atelier/llm':
+        specifier: workspace:*
+        version: link:../llm
       zod:
-        specifier: ^3.24.1
+        specifier: ^3.25.76
         version: 3.25.76
     devDependencies:
       '@types/node':
@@ -116,7 +119,7 @@ importers:
         specifier: ^4.78.1
         version: 4.104.0(zod@3.25.76)
       zod:
-        specifier: ^3.24.1
+        specifier: ^3.25.76
         version: 3.25.76
     devDependencies:
       '@types/node':
