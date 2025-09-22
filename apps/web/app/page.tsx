@@ -72,8 +72,8 @@ export default function Home() {
     try {
       const response = await fetch('/example.txt');
       const text = await response.text();
-      setInputText(text.substring(0, 5000)); // 처음 5000자만 로드
-      toast.success('홍길동전 샘플 텍스트를 불러왔습니다');
+      setInputText(text); // 전체 텍스트 로드
+      toast.success(`홍길동전 샘플 텍스트를 불러왔습니다 (${text.length}자)`);
     } catch (error) {
       toast.error('샘플 텍스트를 불러올 수 없습니다');
     }

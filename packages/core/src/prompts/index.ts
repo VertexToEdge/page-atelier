@@ -183,7 +183,7 @@ ${additionalGuide || ''}
  * 
  * @tags text-truncation, token-management
  */
-export function truncateText(text: string, maxChars: number = 8000): string {
+export function truncateText(text: string, maxChars: number = 50000): string {
   if (text.length <= maxChars) return text;
   
   // Try to cut at sentence boundary

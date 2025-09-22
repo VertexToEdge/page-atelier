@@ -66,10 +66,16 @@ export abstract class LLMAdapter {
         .replace(/```\n?/g, '')
         .trim();
       
+      console.log('Raw JSON response:', jsonString.substring(0, 500));
+      console.log('Cleaned JSON:', cleanJson.substring(0, 500));
+      
       const parsed = JSON.parse(cleanJson);
+      console.log('Parsed JSON keys:', Object.keys(parsed));
+      
       return schema.parse(parsed);
     } catch (error) {
       console.error('JSON validation failed:', error);
+      console.error('Raw response was:', jsonString);
       return null;
     }
   }
@@ -134,10 +140,9 @@ export class GeminiAdapter extends LLMAdapter {
         const fullPrompt = `${systemPrompt ? systemPrompt + '\n\n' : ''}
 ${prompt}
 
-IMPORTANT: Respond with valid JSON that matches this schema:
-${JSON.stringify(schema._def, null, 2)}
-
-Ensure your response is a valid JSON object, not wrapped in markdown code blocks.`;
+You must respond with a valid JSON object. The response should ONLY be JSON, nothing else.
+Do not include any explanations, markdown formatting, or code blocks.
+Just the raw JSON object.`;
 
         const response = await model.generateContent(fullPrompt);
         const text = response.response.text();

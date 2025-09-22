@@ -71,10 +71,10 @@ export class ConsistencyChecker {
     const prompt = `다음 텍스트의 일관성을 검사하세요:
 
 설정노트:
-${JSON.stringify(settingNote, null, 2).substring(0, 3000)}
+${JSON.stringify(settingNote, null, 2)}
 
 검사할 텍스트:
-${text.substring(0, 5000)}
+${text}
 
 검사 항목:
 1. 개연성 (Continuity) - 40% 가중치
@@ -131,7 +131,7 @@ ${text.substring(0, 5000)}
     settingNote: SettingNote
   ): Promise<{ score: number; issues: Issue[] }> {
     const prompt = `텍스트의 개연성과 연속성을 검사하세요:
-${text.substring(0, 3000)}
+${text}
 
 설정노트의 타임라인:
 ${JSON.stringify(settingNote.timeline, null, 2)}
@@ -161,10 +161,10 @@ ${JSON.stringify(settingNote.timeline, null, 2)}
     settingNote: SettingNote
   ): Promise<{ score: number; issues: Issue[] }> {
     const prompt = `캐릭터의 일관성을 검사하세요:
-${text.substring(0, 3000)}
+${text}
 
 캐릭터 설정:
-${JSON.stringify(settingNote.characters, null, 2).substring(0, 2000)}
+${JSON.stringify(settingNote.characters, null, 2)}
 
 각 캐릭터의 성격, 행동, 말투가 설정과 일치하는지 검증하세요.`;
 
@@ -191,10 +191,10 @@ ${JSON.stringify(settingNote.characters, null, 2).substring(0, 2000)}
     settingNote: SettingNote
   ): Promise<{ score: number; issues: Issue[] }> {
     const prompt = `세계관 규칙 준수를 검사하세요:
-${text.substring(0, 3000)}
+${text}
 
 세계관 규칙:
-${JSON.stringify(settingNote.world_rules, null, 2).substring(0, 2000)}
+${JSON.stringify(settingNote.world_rules, null, 2)}
 
 설정된 규칙들이 텍스트에서 일관되게 적용되는지 검증하세요.`;
 

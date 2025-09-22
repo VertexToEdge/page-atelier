@@ -69,7 +69,7 @@ export class SettingBuilder {
     const prompt = `다음 웹소설 텍스트를 분석하여 설정노트를 생성하세요:
 
 텍스트:
-${text.substring(0, 8000)} // Limit for context window
+${text}
 
 요구사항:
 1. 캐릭터 분석:
@@ -159,7 +159,7 @@ JSON 형식으로 응답하세요.`;
    */
   async extractCharacters(text: string): Promise<Character[]> {
     const prompt = `텍스트에서 등장인물들을 추출하고 각 인물의 프로필을 작성하세요:
-${text.substring(0, 4000)}
+${text}
 
 각 캐릭터별로 이름, 역할, 성격, 목표, 관계를 상세히 분석하세요.`;
 
@@ -180,7 +180,7 @@ ${text.substring(0, 4000)}
    */
   async extractWorldRules(text: string): Promise<WorldRule[]> {
     const prompt = `텍스트에서 세계관 규칙과 설정을 추출하세요:
-${text.substring(0, 4000)}
+${text}
 
 마법체계, 사회구조, 기술수준, 문화적 특징 등을 찾아 정리하세요.`;
 
@@ -201,7 +201,7 @@ ${text.substring(0, 4000)}
    */
   async extractTimeline(text: string): Promise<TimelineEvent[]> {
     const prompt = `텍스트에서 주요 사건들을 시간순으로 추출하세요:
-${text.substring(0, 4000)}
+${text}
 
 각 사건의 시점, 내용, 관련 인물, 중요도를 파악하세요.`;
 
